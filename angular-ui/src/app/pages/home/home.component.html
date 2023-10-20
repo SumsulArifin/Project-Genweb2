@@ -1,0 +1,24 @@
+<ul *ngFor="let users of user">
+    <li>{{users.name}}</li>
+  
+  </ul>
+
+  <table mat-table *ngFor="let users of user"class="mat-elevation-z8">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let users"> {{user.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="llet users"> {{user.email}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="password">
+      <th mat-header-cell *matHeaderCellDef> Password </th>
+      <td mat-cell *matCellDef="let users"> {{user.password}} </td>
+    </ng-container>
+  
+  
+
+  </table>

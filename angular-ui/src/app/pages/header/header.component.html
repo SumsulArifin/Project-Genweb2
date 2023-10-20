@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+   
+  <span class="space-buttons"></span>
+  <button mat-raised-button color="primary" routerLink="">Home</button>
+  <span class="space-buttons"></span>
+  <button mat-raised-button color="primary" routerLink="">Profile</button>
+  <span class="space-buttons"></span>
+  <button  mat-raised-button color="primary" routerLink="">create bulk accounts </button>
+  <span class="space-buttons"></span>
+  <button  mat-raised-button color="primary" routerLink="">Downlode accounts </button>
+  <span class="space-buttons"></span>
+  <button *ngIf="! isLoggedIn()"   routerLink="/login" mat-raised-button color="primary">
+    Login
+  </button>
+  <button *ngIf="isLoggedIn()" (click)="logout()" mat-raised-button color="warn">
+    Logout
+  </button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
