@@ -1,4 +1,32 @@
-<ul *ngFor="let users of user">
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Image</th>
+          <th>Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let users of user">
+          <td>
+              <h5>{{ user.name }}</h5>
+          </td>
+          <td>
+              <h5>{{ user.email }}</h5>
+          </td>
+          <td>
+              <img style="width: 100px;" [src]="user.File" alt="File Image" class="img-thumbnail" />
+          </td>
+          <td>
+              <button class="btn btn-primary">Edit</button>
+              <button class="btn btn-primary">Delete</button>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+<!-- <ul *ngFor="let users of user">
     <li>{{users.name}}</li>
   
   </ul>
@@ -21,4 +49,4 @@
   
   
 
-  </table>
+  </table> -->
