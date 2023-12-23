@@ -20,15 +20,12 @@ export class UserService {
   ) {}
 
 
-  registerUser(user: User,file:Blob) {
-    let formData=new FormData();
-    formData.append("file",file)
-    formData.append("user",JSON.stringify(user))
-    return this.httpclient.post(this.PATH_OF_API + '/api/auth/register', formData);
+  registerUser(user: User) {
+    return this.httpclient.post<User>(`${this.PATH_OF_API}/api/v1/auth/register`, user);
   }
 
   public login(loginData: any) {
-    return this.httpclient.post(this.PATH_OF_API + '/api/auth/login', loginData, {
+    return this.httpclient.post(this.PATH_OF_API + '/api/v1/auth/authenticate', loginData, {
       headers: this.requestHeader,
     });
   }

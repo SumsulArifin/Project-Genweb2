@@ -14,23 +14,19 @@ export class RegisterComponent implements OnInit {
 
 
 user =new User("","","","");
-file!:any
+
 
   constructor(private userService: UserService,
     private router: Router) { }
 
   ngOnInit(): void {
   }
-  onChangeFileField(event:any){
-    
-    this.file=event.target.files[0]
-    this.user.imageName = this.file.name;
-    console.log(this.file);
-    
-  }
+
   doRegister(){
-    this.userService.registerUser(this.user,this.file).subscribe({
+    this.userService.registerUser(this.user).subscribe({
       next:(response)=>{
+        console.log(this.user);
+        
         this.router.navigate(['/login']);
       },
       error:(error)=>{},
