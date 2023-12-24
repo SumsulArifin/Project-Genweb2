@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "8be0fdce-0f41-4c2e-a125-f9c889135360",
+		"name": "Quintor-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Availability",
+			"item": [
+				{
+					"name": "Availability of workplaces within rooms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/rooms/availability/workplaces?locationId=5&date=2021-11-26&start=11:00&end=12:00",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"rooms",
+								"availability",
+								"workplaces"
+							],
+							"query": [
+								{
+									"key": "locationId",
+									"value": "5"
+								},
+								{
+									"key": "date",
+									"value": "2021-11-26"
+								},
+								{
+									"key": "start",
+									"value": "11:00"
+								},
+								{
+									"key": "end",
+									"value": "12:00"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Availability of full rooms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/rooms/availability?locationId=5&date=2021-11-26&start=11:00&end=12:00",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"rooms",
+								"availability"
+							],
+							"query": [
+								{
+									"key": "locationId",
+									"value": "5"
+								},
+								{
+									"key": "date",
+									"value": "2021-11-26"
+								},
+								{
+									"key": "start",
+									"value": "11:00"
+								},
+								{
+									"key": "end",
+									"value": "12:00"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservations",
+			"item": [
+				{
+					"name": "AllReservations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/reservations",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"reservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createWorkplaceReservation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"date\": \"2021-11-26\",\n        \"startTime\": \"10:00:00\",\n        \"endTime\": \"11:00:00\",\n        \"employeeId\": 1,\n        \"roomId\": 1,\n        \"workplaceAmount\": 1,\n        \"recurrence\": {\n            \"active\": true,\n            \"recurrencePattern\": \"DAILY\"\n        }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/reservations/workplaces",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"reservations",
+								"workplaces"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createRoomReservation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"date\": \"2021-11-26\",\n        \"startTime\": \"10:00:00\",\n        \"endTime\": \"11:00:00\",\n        \"employeeId\": 1,\n        \"roomId\": 1,\n        \"recurrence\": {\n            \"active\": false,\n            \"recurrencePattern\": \"NONE\"\n        }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/reservations/rooms",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"reservations",
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Location",
+			"item": [
+				{
+					"name": "AllLocations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/locations",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseURL",
+			"value": "http://localhost:8080"
+		}
+	]
+}

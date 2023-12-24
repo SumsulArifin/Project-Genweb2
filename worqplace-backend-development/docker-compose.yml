@@ -1,0 +1,49 @@
+version: "3"
+services:
+    backend:
+        image: registry.quintor.local:5000/worqplace-backend:latest
+        ports:
+            - "8080:8080"
+        networks:
+            app_network:
+                ipv4_address: 172.1.0.3
+        depends_on:
+            - db
+
+    frontend:
+        image: registry.quintor.local:5000/worqplace-frontend:latest
+        ports:
+            - "80:80"
+            - "4200:4200"
+        networks:
+            app_network:
+                ipv4_address: 172.1.0.4
+        depends_on:
+            - backend
+
+    db:
+        image: mysql:latest
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: worqplace
+            MYSQL_ROOT_PASSWORD: adminadmin
+        volumes:
+            - worqplace-db:/var/lib/mysql
+            - ./src/main/resources/schema.sql:/docker-entrypoint-initdb.d/1.sql
+            - ./src/main/resources/data.sql:/docker-entrypoint-initdb.d/2.sql
+        networks:
+            app_network:
+                ipv4_address: 172.1.0.2
+
+volumes:
+    worqplace-db:
+
+networks:
+    app_network:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.1.0.0/24
+                  gateway: 172.1.0.1

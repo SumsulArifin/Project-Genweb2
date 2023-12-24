@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "security.jwt.secret",
+      "type": "java.lang.String",
+      "description": "Secret for signing JWT tokens; do not commit production token."
+    },
+    {
+      "name": "security.jwt.expirationInMs",
+      "type": "java.lang.Integer",
+      "description": "How many milliseconds before JWT tokens expire."
+    },
+    {
+      "name": "security.jwt.expiration-in-ms",
+      "type": "java.lang.String",
+      "description": "Description for security.jwt.expiration-in-ms."
+    }
+  ]
+}
